@@ -74,6 +74,7 @@ const Btn = styled.button`
 function Home() {
   const [joke, setJoke] = useState('');
   const [punch, setPunch] = useState(false);
+  const [reset, setReset] = useState(false);
 
   console.log('JOKE IS', joke);
 
@@ -98,10 +99,11 @@ function Home() {
       }
     };
     fetchJoke();
-  }, []);
+  }, [reset]);
 
-  const reset = () => {
+  const resetJoke = () => {
     setPunch(!punch);
+    setReset(!reset);
   };
 
   return (
@@ -119,7 +121,7 @@ function Home() {
           <TextBaloon>
             <p>{joke && joke[0].punchline}</p>
             <Cite>Nerd 🤓</Cite>
-            <Btn onClick={reset}>Reset</Btn>
+            <Btn onClick={resetJoke}>Reset</Btn>
           </TextBaloon>
         )}
       </div>
