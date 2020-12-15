@@ -6,6 +6,7 @@ const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
   color: palevioletred;
+  margin-bottom: 3em;
 `;
 
 const TextBaloon = styled.div`
@@ -15,7 +16,7 @@ const TextBaloon = styled.div`
     filter: drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.1))
       drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
     margin: 1rem;
-    margin-bottom: 40px;
+    margin-bottom: 4rem;
     padding: 1.5rem 2rem;
     position: relative;
     font-family: 'Source Sans Pro', sans-serif;
@@ -44,18 +45,35 @@ const TextBaloon = styled.div`
 `;
 
 const Cite = styled.div`
+  & {
+    position: absolute;
+    bottom: -2rem;
+    left: 4.5rem;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: black;
+  }
+`;
+
+const Btn = styled.button`
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 10px;
   position: absolute;
-  bottom: -2rem;
-  left: 4.5rem;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  color: black;
+  background: #8ca8d8;
+  bottom: -5.5rem;
+  left: 6rem;
+  border: none;
 `;
 
 function Home() {
   const [joke, setJoke] = useState('');
+  const [punch, setPunch] = useState(false);
 
   console.log('JOKE IS', joke);
 
@@ -82,6 +100,10 @@ function Home() {
     fetchJoke();
   }, []);
 
+  const reset = () => {
+    setPunch(!punch);
+  };
+
   return (
     <div className='Home'>
       <div>
@@ -89,8 +111,17 @@ function Home() {
 
         <TextBaloon>
           <p>{joke && joke[0].setup}</p>
-          <Cite>Nerd</Cite>
+          <Cite>Nerd 🤓</Cite>
+          {!punch && <Btn onClick={() => setPunch(!punch)}>Punchline</Btn>}
         </TextBaloon>
+
+        {punch && (
+          <TextBaloon>
+            <p>{joke && joke[0].punchline}</p>
+            <Cite>Nerd 🤓</Cite>
+            <Btn onClick={reset}>Reset</Btn>
+          </TextBaloon>
+        )}
       </div>
     </div>
   );
