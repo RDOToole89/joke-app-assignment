@@ -3,10 +3,15 @@ import styled from 'styled-components';
 import './Home.css';
 
 const Title = styled.h1`
+  border-radius: 10px;
+  padding: 0.6em;
+  text-align: center;
+  background: #8ca8d8;
+  color: white;
   font-size: 1.5em;
   text-align: center;
-  color: palevioletred;
   margin-bottom: 3em;
+  max-width: 20em;
 `;
 
 const TextBaloon = styled.div`
@@ -16,7 +21,7 @@ const TextBaloon = styled.div`
     filter: drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.1))
       drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
     margin: 1rem;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     padding: 1.5rem 2rem;
     position: relative;
     font-family: 'Source Sans Pro', sans-serif;
@@ -121,7 +126,7 @@ function Home() {
         {punch && (
           <TextBaloon>
             <p>{joke && joke[0].punchline}</p>
-            <Cite>Nerd 🤓</Cite>
+            <Cite>Hilarious Cool Guy 😎</Cite>
             <Btn onClick={resetJoke}>Reset</Btn>
           </TextBaloon>
         )}
