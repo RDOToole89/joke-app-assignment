@@ -4,16 +4,22 @@ function Home() {
   useEffect(() => {
     const fetchJoke = async () => {
       try {
-        const response = fetch(`https://official-joke-api.appspot.com/jokes/programming/random`);
-
-        console.log(response);
+        const response = await fetch(
+          `https://official-joke-api.appspot.com/jokes/programming/random`
+        );
+        const joke = await response.json();
       } catch (e) {
         console.log(e);
       }
     };
+    fetchJoke();
   }, []);
 
-  return <div className='Home'></div>;
+  return (
+    <div className='Home'>
+      <h1>Joke App!</h1>
+    </div>
+  );
 }
 
 export default Home;
