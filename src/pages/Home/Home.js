@@ -104,6 +104,7 @@ function Home() {
   const resetJoke = () => {
     setPunch(!punch);
     setReset(!reset);
+    setJoke((joke[0].setup = ''));
   };
 
   return (
@@ -112,7 +113,7 @@ function Home() {
         <Title>Hilarious Programmer Jokes!</Title>
 
         <TextBaloon>
-          <p>{joke && joke[0].setup}</p>
+          <p>{(joke && joke[0].setup) || '...'}</p>
           <Cite>Nerd 🤓</Cite>
           {!punch && <Btn onClick={() => setPunch(!punch)}>Punchline</Btn>}
         </TextBaloon>
